@@ -8,8 +8,8 @@ class Rover:
 
     def __init__(self, position_x: int, position_y: int, face_direction: str, plateau):
         self.plateau = plateau
-        self.position_x = position_x
-        self.position_y = position_y
+        self.position_x = int(position_x)
+        self.position_y = int(position_y)
         self.face_direction = face_direction
 
     @property

@@ -35,3 +35,9 @@ class Transform:
             rover.change_position(letter)
         output_string = f"{rover.position_x} {rover.position_y} {rover.face_direction}\n"
         return output_string
+
+
+if __name__ == '__main__':
+    data = {"data": "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"}
+    output = Transform().transform(data)
+    print(output)

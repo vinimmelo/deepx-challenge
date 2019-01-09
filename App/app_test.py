@@ -3,7 +3,7 @@ import pytest
 
 @pytest.fixture
 def data():
-    return {"data:", "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"}
+    return {"data": "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM",}
 
 
 @pytest.fixture
@@ -107,3 +107,95 @@ def test_rover_wich_exceeds_value_of_y(Plateau, Rover):
     with pytest.raises(ValueError):
         plateau = Plateau(10, 5)
         rover = Rover(10, 7, 'E', plateau)
+
+
+# Changing Directions tests
+
+def test_if_face_was_correctly_changed_to_right(Rover, Plateau):
+    plat = Plateau(5, 5)
+    rover = Rover(1, 2, 'N', plat)
+    rover.change_position('R')
+    assert rover.face_direction == 'E'
+    rover.change_position('R')
+    assert rover.face_direction == 'S'
+
+
+def test_if_face_was_correctly_changed_to_left(Rover, Plateau):
+    plat = Plateau(5, 5)
+    rover = Rover(1, 2, 'N', plat)
+    rover.change_position('L')
+    assert rover.face_direction == 'W'
+    rover.change_position('L')
+    assert rover.face_direction == 'S'
+
+
+def test_if_face_was_correctly_changed_to_both_sides(Rover, Plateau):
+    plat = Plateau(5, 5)
+    rover = Rover(1, 2, 'N', plat)
+    rover.change_position('R')
+    assert rover.face_direction == 'E'
+    rover.change_position('L')
+    assert rover.face_direction == 'N'
+    rover.change_position('L')
+    rover.change_position('L')
+    assert rover.face_direction == 'S'
+
+
+# Moving Robotics rover tests
+
+def test_if_rover_was_correctly_moved_north(Rover, Plateau):
+    plat = Plateau(5, 5)
+    rover = Rover(1, 2, 'N', plat)
+    rover.change_position('M')
+    assert rover.position_y == 3
+    rover.change_position('M')
+    assert rover.position_y == 4
+
+
+def test_if_rover_was_correctly_moved_south(Rover, Plateau):
+    plat = Plateau(5, 5)
+    rover = Rover(1, 3, 'S', plat)
+    rover.change_position('M')
+    assert rover.position_y == 2
+    rover.change_position('M')
+    assert rover.position_y == 1
+
+
+def test_if_rover_was_correctly_moved_west(Rover, Plateau):
+    plat = Plateau(5, 5)
+    rover = Rover(3, 3, 'W', plat)
+    rover.change_position('M')
+    assert rover.position_x == 2
+    rover.change_position('M')
+    assert rover.position_x == 1
+
+
+def test_if_rover_was_correctly_moved_east(Rover, Plateau):
+    plat = Plateau(5, 5)
+    rover = Rover(3, 3, 'E', plat)
+    rover.change_position('M')
+    assert rover.position_x == 4
+    rover.change_position('M')
+    assert rover.position_x == 5
+
+
+def test_if_rover_was_correctly_moved_over_boundary(Rover, Plateau):
+    plat = Plateau(5, 5)
+    rover = Rover(1, 2, 'N', plat)
+    rover.change_position('M')
+    assert rover.position_y == 3
+    rover.change_position('M')
+    assert rover.position_y == 4
+    rover.change_position('M')
+    rover.change_position('M')
+    rover.change_position('M')
+    assert rover.position_y == 5
+    assert rover.position_x == 1
+
+
+def test_final(data, Rover, Plateau):
+    new_data = data['data'].split('\n')
+    x, y = new_data[0].split(' ')
+    plato = Plateau(int(x), int(y))
+    assert plato.max_x == 5
+    assert plato.max_y == 5

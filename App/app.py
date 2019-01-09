@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 import json
 
-from transform import transform
+from transform import Transform
 
 app = Flask(__name__)
 api = Api(app)
@@ -14,12 +14,12 @@ class GetData(Resource):
 
     def put(self):
         data = request.get_json(force=True)
-        get_results = transform(data)
+        get_results = Transform().transform(data)
         return jsonify(output=get_results)
 
     def post(self):
         data = request.get_json(force=True)
-        get_results = transform(data)
+        get_results = Transform().transform(data)
         return jsonify(output=get_results)
 
 

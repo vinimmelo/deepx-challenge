@@ -41,3 +41,7 @@ if __name__ == '__main__':
     data = {"data": "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"}
     output = Transform().transform(data)
     print(output)
+
+    data2 = {"data": "10 10\n5 5 N\nRRMMLMMLM\n7 5 W\nLLMRMRMLM"}
+    output2 = Transform().transform(data2)
+    print(output2)

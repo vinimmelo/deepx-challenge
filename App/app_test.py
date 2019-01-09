@@ -7,6 +7,11 @@ def data():
 
 
 @pytest.fixture
+def data2():
+    return {"data": "10 10\n5 5 N\nRRMMLMMLM\n7 5 W\nLLMRMRMLM"}
+
+
+@pytest.fixture
 def Plateau():
     from plateau import Plateau
     return Plateau
@@ -199,3 +204,8 @@ def test_if_rover_was_correctly_moved_over_boundary(Rover, Plateau):
 def test_final(data, Transform):
     output = Transform().transform(data)
     assert output == "1 3 N\n5 1 E\n"
+
+
+def test_final2(data2, Transform):
+    output = Transform().transform(data2)
+    assert output == "7 4 N\n7 3 S\n"

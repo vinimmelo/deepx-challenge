@@ -53,6 +53,18 @@ Now, there will be two paths to test the application.
     - Run curl: `curl -X POST 127.0.0.1:5000/api -d '{"data": "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"}'
 `
 
+## Samples Inputs and Outputs
+
+#### Sample 1
+
+- Input: `{"data", "{"data": "10 10\n5 5 N\nRRMMLMMLM\n7 5 W\nLLMRMRMLM"}`
+- Output: `{"output": "7 4 N\n7 3 S"}`
+
+#### Sample 2
+
+- Input: `{"data": "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"}`
+- Output: `{"output": "1 3 N\n5 1 E\n"}`
+
 ## Coded With
 
 - **Python**

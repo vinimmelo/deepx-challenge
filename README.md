@@ -2,7 +2,14 @@
 
 ## Introduction
 
-Code made to solve a challenge.
+Code made to solve the challenge of Mars Rover, made by DeepX.
+
+Were created two classes to represent the objects Plateau and Rover, the transformation of the data was made inside the transform file.
+
+After receive the data in the API, the flask application return in json the solution.
+
+In the app_tests file, there is two tests with different data that will test the solution that are asked for.
+
 
 ## Mars Rover Problem
 
@@ -14,10 +21,41 @@ Code made to solve a challenge.
 
 >Assume that the square directly North from (x, y) is (x, y+1).
 
+## Prepare the Environment
+
+To run the tests and configure the environment, do the follow steps:
+
+- Install Python3.7
+- Git clone the project: `git clone https://github.com/vinimmelo/deepx-challenge.git`
+- Cd into the project app: `cd deepx-challenge/App/`
+- Run `pip install -r requirements`
+
+Now, there will be two paths to test the application.
+
+####  Run the Tests
+
+- Run the file tests.bat (if you are on a Windows system).
+    - `.\tests.bat`
+- If you are on Linux or Mac Os run the follow command:
+    - `while :; pytest; sleep 5; done`
+
+**P.S:**
+- If you want to see the output being generated, run the transform file directly:
+    - `python3 transform.py` or `python transform.py`
+
+#### Run the API
+
+- Run `flask run` and connect (by default) to:
+    - [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+- Follow the instructions, or send an Post to the API url:
+    - [http://127.0.0.1:5000/api](http://127.0.0.1:5000/api)
+- Sample of Usage:
+    - Run curl: `curl -X POST 127.0.0.1:5000/api -d '{"data": "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"}'
+`
 
 ## Coded With
 
-- Python
+- **Python**
 - Flask
 - Flask Restful
 
@@ -27,5 +65,5 @@ Code made to solve a challenge.
 
 ## License
 
-Project based on MIT license terms, see the file README for further details.
+Project based on MIT license terms, see the file [README](https://github.com/vinimmelo/deepx-challenge/blob/master/README.md) for further details.
 

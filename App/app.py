@@ -1,6 +1,5 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_restful import Resource, Api
-import json
 
 from transform import Transform
 
@@ -21,6 +20,11 @@ class GetData(Resource):
         data = request.get_json(force=True)
         get_results = Transform().transform(data)
         return jsonify(output=get_results)
+
+
+@app.route('/')
+def swagger():
+    return render_template('index.html')
 
 
 api.add_resource(GetData, '/api')

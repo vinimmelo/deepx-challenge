@@ -18,9 +18,10 @@ def Rover():
     return Rover
 
 
-# API test below
-def output_test(data):
-    pass
+@pytest.fixture
+def Transform(data):
+    from transform import Transform
+    return Transform
 
 
 # Plateau Tests Below
@@ -57,7 +58,7 @@ def test_plateau_with_wrong_data_sample_with_empty_string(Plateau):
 
 
 def test_plateau_with_wrong_data_sample_with_empty_list(Plateau):
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         plateau = Plateau(1, [])
 
 
@@ -193,9 +194,8 @@ def test_if_rover_was_correctly_moved_over_boundary(Rover, Plateau):
     assert rover.position_x == 1
 
 
-def test_final(data, Rover, Plateau):
-    new_data = data['data'].split('\n')
-    x, y = new_data[0].split(' ')
-    plato = Plateau(int(x), int(y))
-    assert plato.max_x == 5
-    assert plato.max_y == 5
+# Final Test Assertion
+
+def test_final(data, Transform):
+    output = Transform().transform(data)
+    assert output == "1 3 N\n5 1 E\n"

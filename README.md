@@ -57,7 +57,7 @@ Now, there will be two paths to test the application.
 
 #### Sample 1
 
-- Input: `{"data", "{"data": "10 10\n5 5 N\nRRMMLMMLM\n7 5 W\nLLMRMRMLM"}`
+- Input: `{"data": "10 10\n5 5 N\nRRMMLMMLM\n7 5 W\nLLMRMRMLM"}`
 - Output: `{"output": "7 4 N\n7 3 S"}`
 
 #### Sample 2

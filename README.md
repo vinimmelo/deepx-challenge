@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Code made to solve the challenge of Mars Rover, made by DeepX.
+Code made to solve the challenge of Mars Rover.
 
 Were created two classes to represent the objects Plateau and Rover, the transformation of the data was made inside the transform file.
 
